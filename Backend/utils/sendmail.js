@@ -9,9 +9,10 @@ const transporter = nodemailer.createTransport({
 const sendbookingemail = async (useremail, username, eventtitle) => {
   try {
     const mailoptions = {
-      from: process.env.EMAIL_USER,
+      from: `"Eventora" <${process.env.EMAIL_USER}>`,
       to: useremail,
       subject: `Booking Confirmed: ${eventtitle}`,
+       
       html: `
         <h2>Hi ${username}!</h2>
         <p>Your booking for the event <strong>${eventtitle}</strong> is successfully confirmed.</p>
