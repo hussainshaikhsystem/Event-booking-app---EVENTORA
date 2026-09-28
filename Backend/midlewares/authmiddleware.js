@@ -12,9 +12,9 @@ const protect = async (req, res , next) => {
             if(!req.user){
                 return res.status(401).json({message: 'not authorized , user not found'})
             }
-            next()
+           return  next()
         }catch(err){
-            res.status(400).json({message: 'not authorized'})
+           return  res.status(400).json({message: 'not authorized'})
         }
     }
       return res.status(401).json({ message: 'not authorized, no token' });

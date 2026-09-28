@@ -17,8 +17,8 @@ const geteventbyid = async (req, ree) => {
     res.status(400).json({ message: "unable to fetch event with this Id" });
   }
 };
-const createevent = async (req, ree) => {
-  try { 
+const createevent = async (req, res) => {
+  try {
     const {
       title,
       description,
@@ -39,14 +39,13 @@ const createevent = async (req, ree) => {
       availableseats,
       totalseats,
       ticketprice,
-      imageurl
+      imageurl,
+      createdby: req.user._id,
     });
-    if (!event) {
-      return res.status(404).json({ error: "event not found" });
-    }
-    res.status(200).json(event);
+    res.status(201).json(event);
   } catch (err) {
     res.status(400).json({ message: "unable to create event" });
+    console.error(err.message)
   }
 };
 const updateevent = async (req, ree) => {

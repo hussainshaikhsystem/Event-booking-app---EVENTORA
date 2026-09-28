@@ -57,6 +57,7 @@ const bookevent = async (req, res) => {
     amount: event.ticketprice,
   });
   await otpmodel.deleteMany({ email: req.user.email, action: "event_booking" });
+  await sendbookingemail(req.user.email, event.title, booking._id);
   res
     .status(201)
     .json({ message: "booking created , please check ur email for " });
@@ -121,3 +122,4 @@ const cancelbooking = async (req, res) => {
   await booking.deleteOne();
   res.json({ message: "Booking Cancelled" });
 };
+module.exports = {sendbookingotp,bookevent, confirmbooking,getmybookings, cancelbooking}
