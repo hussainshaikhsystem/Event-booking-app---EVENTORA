@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "dev:server": "cd backend && npm run dev",
+    "dev:client": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.13.0",
+    "concurrently": "^10.0.5",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "mongoose": "^9.11.0"
+  }
+}

@@ -17,6 +17,9 @@ connectdb();
 app.use('/api/auth', authroutes);
 app.use('/api/events', eventroutes);
 app.use('/api/bookings', bookingsroutes);
+if(!process.env.VERCEL){
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+}
+module.exports = app;
