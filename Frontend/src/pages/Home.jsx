@@ -64,11 +64,7 @@ const Home = () => {
             today.
           </p>
 
-          <input
-            type="search"
-            placeholder="Search Event by title"
-            className="h-14 w-[80%] md:w-full h-[50px] max-w-2xl rounded-full bg-white px-6 text-black outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-white/50"
-          />
+         
         </div>
       </div>
       {/* // features */}
