@@ -1,6 +1,7 @@
 
+const bookingmodel = require("../models/bookingmodel.js");
 const eventmodel = require("../models/eventmodel.js");
-const getallevents = async (req, ree) => {
+const getallevents = async (req, res) => {
   try {
     const events = await eventmodel.find({});
     res.status(200).json(events);
@@ -8,7 +9,7 @@ const getallevents = async (req, ree) => {
     res.status(400).json({ message: "unable to fetch events" });
   }
 };
-const geteventbyid = async (req, ree) => {
+const geteventbyid = async (req, res) => {
   try {
     const { id } = req.params;
     const event = await eventmodel.findById(id);
@@ -36,7 +37,7 @@ const createevent = async (req, res) => {
       date,
       location,
       category,
-      availableseats,
+      availableseats: availableseats ?? totalseats,
       totalseats,
       ticketprice,
       imageurl,
@@ -48,7 +49,7 @@ const createevent = async (req, res) => {
     console.error(err.message)
   }
 };
-const updateevent = async (req, ree) => {
+const updateevent = async (req, res) => {
   try {
     const { id } = req.params;
     const {
@@ -81,13 +82,14 @@ const updateevent = async (req, ree) => {
     res.status(400).json({ message: "unable to Update event" });
   }
 };
-const deleteevent = async (req, ree) => {
+const deleteevent = async (req, res) => {
   try {
     const { id } = req.params;
     const deletedevent = await eventmodel.findByIdAndDelete(id);
     if (!deletedevent) {
       return res.status(404).json({ error: "event not found" });
     }
+    await bookingmodel.deleteMany({eventid: id})
     res.status(200).json(deletedevent);
   } catch (err) {
     res.status(400).json({ message: "unable to Delete event" });
