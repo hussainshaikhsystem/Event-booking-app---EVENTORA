@@ -39,8 +39,8 @@ const Register = () => {
     }
   }
   return (
-    <div className="bg-[#f9f9f9] flex justify-center items-center min-h-screen">
-      <div className="bg-white flex flex-col gap-4  w-[30vw] h-[70vh] rounded-3xl p-10  ">
+    <div className="bg-[#f9f9f9] flex justify-center items-center min-h-screen md:p-15 ">
+      <div className="bg-white  flex flex-col gap-4   w-[90%] p-10  md:w-[40%] rounded-2xl shadow-lg">
         <div>
           <h1 className="font-extrabold text-3xl text[#030507] text-center">
             Create An Account

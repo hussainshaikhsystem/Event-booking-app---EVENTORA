@@ -49,7 +49,7 @@ const Home = () => {
             Welcome to Eventora
           </span>
 
-          <h1 className="text-5xl font-extrabold leading-tight md:text-7xl">
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight md:text-7xl">
             Find Your Next <br />
             <span className="bg-linear-to-b from-white to-gray-500 bg-clip-text text-transparent">
               Unforgettable
@@ -58,7 +58,7 @@ const Home = () => {
             Experience
           </h1>
 
-          <p className="max-w-2xl text-lg font-light text-gray-200">
+          <p className="max-w-2xl text-sm md:text-lg font-light text-gray-200">
             Discover the best tech conferences, late-night music festivals, and
             hands-on workshops happening directly in your area. Secure your spot
             today.
@@ -67,7 +67,7 @@ const Home = () => {
           <input
             type="search"
             placeholder="Search Event by title"
-            className="h-14 w-full max-w-2xl rounded-full bg-white px-6 text-black outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-white/50"
+            className="h-14 w-[80%] md:w-full h-[50px] max-w-2xl rounded-full bg-white px-6 text-black outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-white/50"
           />
         </div>
       </div>

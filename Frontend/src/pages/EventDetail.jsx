@@ -62,25 +62,25 @@ const EventDetail = () => {
   if (loading) return <div>Loading...</div>;
   if (!event) return <div>Event not found</div>;
   return (
-    <div className="flex justify-center items-center min-h-screen ">
+    <div className="flex justify-center items-center min-h-screen p-10">
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="flex flex-col border-1  bg-[#f9f9f9]  p-10 rounded-2xl m-5 h-auto">
+        <div className="flex flex-col border-1  bg-[#f9f9f9]  p-5 md:p-10 rounded-2xl  h-auto w-[100%] md:m-5 md:w-[60%]">
           <img
             className="rounded-2xl h-[40vh] object-cover"
             src={event.imageurl}
             alt=""
           />
-          <div className="flex ">
-            <div className=" flex flex-col gap-3 p-5 w-[60%]  ">
-              <h2 className="h-[50px] bg-[#e6e6ea] w-[150px]  rounded-4xl flex justify-center items-center capitalize md:uppercase">
+          <div className="flex flex-col w-[100%] justify-center md:flex-row">
+            <div className=" flex flex-col w-[100%] gap-3 p-5 w-[60%]  ">
+              <h2 className="h-[20px]  md:h-[50px] text-center bg-[#e6e6ea] w-[150px]  rounded-4xl flex justify-center items-center capitalize md:uppercase">
                 {event.category}
               </h2>
-              <h1 className="font-extrabold text-5xl ">{event.title}</h1>
-              <h2>{event.description}</h2>
+              <h1 className="font-extrabold text-xl md:text-5xl">{event.title}</h1>
+              <h2 className="text-sm md:text-lg">{event.description}</h2>
             </div>
-            <div className=" bg-white gap-2 rounded-2xl w-[40%] flex m-4 p-4 flex-col self-start">
+            <div className="w-[90%] md:w-[100%]  gap-2 rounded-2xl w-[40%] flex m-4 p-4 flex-col self-start">
               <h2 className="font-bold text-2xl">Booking Details</h2>
 
               <div className="flex items-center gap-3">
@@ -139,7 +139,9 @@ const EventDetail = () => {
                 <>
                   {confirm ? (
                     <>
-                      <h2 className="text-xl text-[#6f757e] text-center bg-[#cfd3db] h-10 rounded-2xl flex justify-center items-center">Request sent</h2>
+                      <h2 className="text-xl text-[#6f757e] text-center bg-[#cfd3db] h-10 rounded-2xl flex justify-center items-center">
+                        Request sent
+                      </h2>
                       <p className="text-green-400 mt-2 text-center">
                         Booking Requested! Awaiting Admin Confirmation
                       </p>
