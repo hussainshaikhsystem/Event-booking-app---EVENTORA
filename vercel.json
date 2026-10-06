@@ -1,9 +1,11 @@
 {
-  "installCommand": "npm install && cd backend && npm install && cd ../frontend && npm install",
-  "buildCommand": "cd frontend && npm run build",
-  "frontend/build": "frontend/dist",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "backend": { "root": "Backend", "framework": "express" },
+    "frontend": { "root": "Frontend", "framework": "vite" }
+  },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/api/(.*)", "destination": { "service": "backend" } },
+    { "source": "/(.*)", "destination": { "service": "frontend" } }
   ]
 }
