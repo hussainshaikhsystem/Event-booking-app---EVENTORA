@@ -118,23 +118,25 @@ const AdminDashboard = () => {
   const revenue = paid.reduce((sum, b) => sum + b.amount, 0);
 
   return (
-    <div className="min-h-screen bg-[#f9f9f9] w-full flex flex-col gap-6 p-10 items-center">
-      <div className="text-white  bg-black flex justify-between items-center w-[90%] rounded-2xl h-40 p-6">
+    <div className="min-h-screen bg-[#f9f9f9] w-full flex flex-col gap-6 p-4 md:p-10 items-center">
+      <div className="text-white bg-black flex flex-col md:flex-row gap-4 md:justify-between md:items-center w-[90%] rounded-2xl h-auto md:h-40 p-6">
         <div className="flex flex-col gap-3">
-          <h1 className="font-extrabold text-4xl">Admin DashBoard</h1>
+          <h1 className="font-extrabold text-3xl md:text-4xl">
+            Admin DashBoard
+          </h1>
           <p>Manage events and manually confirm bookings</p>
         </div>
         <button
           onClick={() => setshowcreate(!showcreate)}
-          className="bg-white h-15 text-black rounded-2xl flex justify-center items-center w-60 font-bold"
+          className="bg-white h-12 md:h-15 text-black rounded-2xl flex justify-center items-center w-full md:w-60 font-bold"
         >
           {showcreate ? "Cancel Creation" : "+ Create New Event"}
         </button>
       </div>
-      <div className="boxes flex gap-3 justify-between w-[90%]">
-        <div className="box bg-white  w-[30%] flex justify-between flex-row rounded-2xl p-4">
+      <div className="boxes flex flex-col md:flex-row gap-3 md:justify-between w-[90%]">
+        <div className="box bg-white w-full md:w-[30%] flex justify-between flex-row rounded-2xl p-4">
           <div className="">
-            <h2 className="font-bold  text-[#88838a]">TOTAL REVENUE</h2>
+            <h2 className="font-bold text-[#88838a]">TOTAL REVENUE</h2>
             <h1 className="font-extrabold text-3xl text-[#089942]">
               ₹{revenue}
             </h1>
@@ -145,9 +147,9 @@ const AdminDashboard = () => {
             </h1>
           </div>
         </div>
-        <div className="box bg-white w-[30%] flex justify-between flex-row  rounded-2xl p-4">
+        <div className="box bg-white w-full md:w-[30%] flex justify-between flex-row rounded-2xl p-4">
           <div>
-            <h2 className="font-bold  text-[#88838a]">PAID CLIENTS</h2>
+            <h2 className="font-bold text-[#88838a]">PAID CLIENTS</h2>
             <h1 className="font-extrabold text-3xl text-[#2d60d0]">
               {paid.length}
             </h1>
@@ -158,9 +160,9 @@ const AdminDashboard = () => {
             </h1>
           </div>
         </div>
-        <div className="box bg-white w-[30%] flex justify-between flex-row   rounded-2xl p-4">
+        <div className="box bg-white w-full md:w-[30%] flex justify-between flex-row rounded-2xl p-4">
           <div>
-            <h2 className="font-bold  text-[#88838a]">PENDING REQUESTS</h2>
+            <h2 className="font-bold text-[#88838a]">PENDING REQUESTS</h2>
             <h1 className="font-extrabold text-3xl text-[#c78611]">
               {pending}
             </h1>
@@ -174,11 +176,11 @@ const AdminDashboard = () => {
       </div>
 
       {showcreate && (
-        <div className="w-[90%] flex gap-8 flex-col  min-h-auto p-10">
+        <div className="w-[90%] flex gap-8 flex-col min-h-auto p-4 md:p-10">
           <h1 className="font-extrabold text-3xl">Create New Event</h1>
 
           <form
-            className="grid grid-cols-2 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
             onSubmit={handlecreateevent}
             action=""
           >
@@ -233,17 +235,17 @@ const AdminDashboard = () => {
             <input
               type="text"
               onChange={(e) => setcreateitems({...createitems, imageurl: e.target.value})}
-              className="col-span-2 h-15 pl-6 border-1 bordr-black pt-4"
+              className="md:col-span-2 h-15 pl-6 border-1 bordr-black pt-4"
             />
             <textarea
             onChange={(e) => setcreateitems({...createitems, description: e.target.value})}
-              className="col-span-2 h-40 p-10 border-1 border-black"
+              className="md:col-span-2 h-40 p-4 md:p-10 border-1 border-black"
               name=""
               id=""
               placeholder="Event Description"
             ></textarea>
             <button
-              className="bg-[#101825] text-white font-bold flex justify-center items-center col-span-2 h-15 rounded-2xl"
+              className="bg-[#101825] text-white font-bold flex justify-center items-center md:col-span-2 h-15 rounded-2xl"
               type="submit"
             >
               {" "}
@@ -253,24 +255,24 @@ const AdminDashboard = () => {
         </div>
       )}
 
-      <div className="w-[90%] flex flex-row  ">
-        <div className="events w-[50%]  p-5 flex flex-col ">
+      <div className="w-[90%] flex flex-col md:flex-row">
+        <div className="events w-full md:w-[50%] p-2 md:p-5 flex flex-col">
           <div className="flex gap-3">
             <span className="flex font-bold text-xl items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-600 text-sm">
               {events.length}
             </span>
             <h1 className="text-3xl font-bold">All Events</h1>
           </div>
-          <div className="rounded-2xl overflow-hidden m-4">
+          <div className="rounded-2xl overflow-hidden my-4 md:m-4">
             {loading ? (
               <div>Loading...</div>
             ) : (
               events.map((event) => (
                 <div key={event._id} className="w-full bg-white p-4">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-3">
                     <div>
                       <h1 className="font-bold text-xl">{event.title}</h1>
-                      <div className="flex gap-4 text-sm text-gray-500 mt-1">
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500 mt-1">
                         <span className="flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full bg-blue-500"></div>
                           {new Date(event.date).toLocaleDateString("en-IN", {
@@ -303,7 +305,7 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="bookings p-5 w-[50%] ">
+        <div className="bookings p-2 md:p-5 w-full md:w-[50%]">
           <div className="flex gap-3">
             <span className="flex font-bold text-xl items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-600 text-sm">
               {bookings.length}
@@ -311,7 +313,7 @@ const AdminDashboard = () => {
             <h1 className="text-3xl font-extrabold">Booking Requests</h1>
           </div>
 
-          <div className="rounded-2xl bg-white overflow-hidden m-4">
+          <div className="rounded-2xl bg-white overflow-hidden my-4 md:m-4">
             {loading ? (
               <div>Loading....</div>
             ) : (
@@ -324,34 +326,34 @@ const AdminDashboard = () => {
                       : "opacity-100"
                   }`}
                 >
-                  <div className="flex justify-between">
-                    <h1 className="font-extrabold text-2xl">
+                  <div className="flex justify-between gap-3">
+                    <h1 className="font-extrabold text-xl md:text-2xl">
                       {booking.eventid?.title}
                     </h1>
                     <div className="flex gap-2 flex-col">
-                      <p className="bg-[#fff7bd] text-[#916a27] text-xs   capitalize text-center md:uppercase px-3 py-1  rounded-xl">
+                      <p className="bg-[#fff7bd] text-[#916a27] text-xs capitalize text-center md:uppercase px-3 py-1 rounded-xl">
                         {booking.status}
                       </p>
-                      <p className="bg-[#e7e6eb]   text-[#2d2c34] text-xs capitalize md:uppercase px-3 py-1 rounded-xl">
+                      <p className="bg-[#e7e6eb] text-[#2d2c34] text-xs capitalize md:uppercase px-3 py-1 rounded-xl">
                         {booking.paymentstatus}
                       </p>
                     </div>
                   </div>
 
-                  <div className="box bg-[#f9f9f9] flex flex-col  p-3">
-                    <div className="flex ">
+                  <div className="box bg-[#f9f9f9] flex flex-col p-3">
+                    <div className="flex flex-wrap">
                       <p className="text-[#74737a] w-25">USER : </p>
                       <p>{booking.userid?.name}</p>
-                      <span> ({booking.userid?.email})</span>
+                      <span className="break-all"> ({booking.userid?.email})</span>
                     </div>
-                    <div className="flex ">
+                    <div className="flex">
                       <p className="text-[#74737a] w-25">AMOUNT : </p>
                       <p className="text-[#4a9e7b]">
                         {" "}
                         ₹{booking.eventid?.ticketprice}
                       </p>
                     </div>
-                    <div className="flex ">
+                    <div className="flex flex-wrap">
                       <p className="text-[#74737a] w-25">DATE : </p>
                       <span>
                         {new Date(booking.createdAt).toLocaleString("en-IN", {
@@ -363,7 +365,7 @@ const AdminDashboard = () => {
                         })}
                       </span>
                     </div>
-                    <div className="flex ">
+                    <div className="flex">
                       <p className="text-[#74737a] w-25">SEATS : </p>
                       <p>
                         <span className="text-[#51af80]">
@@ -374,7 +376,7 @@ const AdminDashboard = () => {
                     </div>
                   </div>
 
-                  <div className="buttons flex justify-between w-full">
+                  <div className="buttons flex flex-wrap gap-2 justify-between w-full">
                     <button
                       disabled={
                         busy === booking._id || booking.status === "cancelled"
